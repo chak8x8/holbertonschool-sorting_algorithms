@@ -11,17 +11,17 @@
  */
 int partition(int *array, size_t low, size_t high, size_t size)
 {
-	int pivot = array[high];
-	size_t i = low - 1;
+	int pivot = array[high], temp;
+	size_t i = low - 1, j;
 
-	for (size_t j = low; j < high; j++)
+	for (j = low; j < high; j++)
 	{
 		if (array[j] < pivot)
 		{
 			i++;
 			if (i != j)
 			{
-				int temp = array[i];
+				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
 				print_array(array, size);
@@ -30,7 +30,7 @@ int partition(int *array, size_t low, size_t high, size_t size)
 	}
 	if (i + 1 != high)
 	{
-		int temp = array[i + 1];
+		temp = array[i + 1];
 		array[i + 1] = array[high];
 		array[high] = temp;
 		print_array(array, size);
@@ -47,9 +47,11 @@ int partition(int *array, size_t low, size_t high, size_t size)
  */
 void quick_sort_recursive(int *array, size_t low, size_t high, size_t size)
 {
+	int pivot_index;
+
 	if (low < high)
 	{
-		int pivot_index = partition(array, low, high, size);
+		pivot_index = partition(array, low, high, size);
 		
 		if (pivot_index > 0) /* Prevent underflow for size_t */
 		{
