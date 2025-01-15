@@ -1,4 +1,4 @@
-#iniclude "sort.h"
+#include "sort.h"
 
 /**
  * partition - Partitions the array using the Lomuto partition scheme.
